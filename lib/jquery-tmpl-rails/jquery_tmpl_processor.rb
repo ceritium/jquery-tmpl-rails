@@ -17,7 +17,7 @@ module Sprockets
     def evaluate(scope, locals, &block)
       <<-TMPL
 ;(function($) {
-  return $.template(#{scope.logical_path.inspect}, "#{escape_javascript data}");
+  return $.template(#{scope.logical_path.inspect}, "#{escape_javascript(Haml::Engine.new(data).render)}");
 })(jQuery);
         TMPL
     end
